@@ -5,10 +5,12 @@ import Login from './components/auth/Login.js'
 import Proyectos from './components/proyectos/Proyectos.js'
 
 import ProyectoState from './context/proyectos/ProyectoState.js'
+import TareaState from './context/tareas/TareaState.js'
 
 function App() {
   return (
-  	<ProyectoState>
+    <ProyectoState>
+  	<TareaState>
   		<Router>
   			<Switch>
   				<Route exact path='/' component={Login}/>
@@ -16,6 +18,7 @@ function App() {
   				<Route exact path='/proyectos' component={Proyectos}/>
   			</Switch>
   		</Router>
+    </TareaState>
     </ProyectoState>
   )
 }

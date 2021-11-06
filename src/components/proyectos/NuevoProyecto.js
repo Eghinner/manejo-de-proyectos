@@ -1,19 +1,31 @@
 import React, {useState, useContext} from 'react'
 import ProyectContext from '../../context/proyectos/ProyectContext.js'
 
+
 const NuevoProyecto = () => {
 
 	const context = useContext(ProyectContext)
-	const {formulario, showFormulario} = context
+	const {formulario, showFormulario, agregarProyecto} = context
 
 	const [proyecto, setProyecto] = useState({
-		nombre: ''
+		id: '',
+		name: ''
 	})
 
-	const {nombre} = proyecto
+	const {name} = proyecto
 
 	const handleSubmit = e => {
 		e.preventDefault()
+
+		// Validar
+		if (name.trim()==='') {return}
+
+		// Agregar proyecto al context
+		agregarProyecto(proyecto)
+		// Vaciar input
+		setProyecto({
+			name: ''
+		})
 	}
 
 	const handleChange = e => {
@@ -23,12 +35,16 @@ const NuevoProyecto = () => {
 		})
 	}
 
+	const mostrar = () => {
+		showFormulario()
+	}
+
 	return (
 		<React.Fragment>
 			<button
 				type="button"
 				className="btn btn-block btn-primario"
-				onClick={()=>showFormulario()}
+				onClick={mostrar}
 			>
 				Nuevo Proyecto
 			</button>
@@ -43,8 +59,8 @@ const NuevoProyecto = () => {
 						className="input-text"
 						placeholder="Nombre del proyecto"
 						type="text"
-						name="nombre"
-						value={nombre}
+						name="name"
+						value={name}
 						onChange={handleChange}
 					/>
 					<input
