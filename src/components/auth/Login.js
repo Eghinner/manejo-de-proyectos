@@ -64,6 +64,9 @@ const Login = () => {
 				<Link to={'./nueva-cuenta'} className="enlace-cuenta">
 					Abrir nueva cuenta
 				</Link>
+				<Link to={'./proyectos'} className="enlace-cuenta">
+					Proyectos
+				</Link>
 			</div>
 		</div>
 	)
