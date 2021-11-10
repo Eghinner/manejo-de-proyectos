@@ -20,6 +20,7 @@ const Login = props => {
 		if (mensaje) {
 			mostrarAlerta(mensaje.msg, mensaje.categoria)
 		}
+		// eslint-disable-next-line
 	}, [mensaje, autenticado, props.history])
 
 	const [usuario, setUsuario] = useState({
@@ -99,9 +100,6 @@ const Login = props => {
 				</form>
 				<Link to={'./nueva-cuenta'} className="enlace-cuenta">
 					Abrir nueva cuenta
-				</Link>
-				<Link to={'./proyectos'} className="enlace-cuenta">
-					Proyectos
 				</Link>
 			</div>
 		</div>

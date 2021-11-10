@@ -2,7 +2,6 @@ import {
 	Tareas_proyecto,
 	Agregar_tarea,
 	Eliminar_tarea,
-	Estado_tarea,
 	Seleccionar_tarea,
 	Actualizar_tarea
 } from '../../types'
@@ -12,26 +11,24 @@ const tareaReducer = (state, action) => {
 		case Tareas_proyecto:
 			return {
 				...state,
-				tareasproyecto: state.tareas.filter(tarea=>
-					tarea.proyectid===action.payload)
+				tareasproyecto: action.payload
 			}
 		case Agregar_tarea:
 			return {
 				...state,
-				tareas: [action.payload,...state.tareas]
+				tareasproyecto: [action.payload,...state.tareasproyecto]
 			}
 		case Eliminar_tarea:
 			return {
 				...state,
-				tareas: state.tareas.filter(tarea=>
-					tarea.id!==action.payload)
+				tareasproyecto: state.tareasproyecto.filter(tarea=>
+					tarea._id!==action.payload)
 			}
 		case Actualizar_tarea:
-			case Estado_tarea:
 				return {
 					...state,
-					tareas: state.tareasproyecto.map(tarea=>
-						tarea.id===action.payload.id?action.payload:tarea),
+					tareasproyecto: state.tareasproyecto.map(tarea=>
+						tarea._id===action.payload._id?action.payload:tarea),
 					taraseleccionada: null
 				}
 			case Seleccionar_tarea:

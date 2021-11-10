@@ -28,7 +28,7 @@ const ListadoTarea = () => {
 						{
 							tareasproyecto.map(task=>(
 								<CSSTransition
-									key={task.id}
+									key={task._id}
 									timeout={200}
 									classNames="tarea"
 								>
@@ -44,7 +44,7 @@ const ListadoTarea = () => {
 			<button
 				type="button"
 				className="btn btn-eliminar"
-				onClick={()=>elminarProyecto(proyecto.id)}
+				onClick={()=>elminarProyecto(proyecto._id)}
 			>Eliminar Proyecto &times;</button>
 		</React.Fragment>
 	)

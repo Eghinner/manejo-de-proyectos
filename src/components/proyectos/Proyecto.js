@@ -11,8 +11,8 @@ const Proyecto = ({proyecto}) => {
 	const {obtenerTareas} = tareacontext
 
 	const showProyect = id => {
-		actualProyecto(proyecto.id)
-		obtenerTareas(proyecto.id)
+		actualProyecto(id)
+		obtenerTareas(id)
 	}
 
 	return (
@@ -20,7 +20,7 @@ const Proyecto = ({proyecto}) => {
 			<button
 				type="button"
 				className="btn btn-blank"
-				onClick={showProyect}
+				onClick={()=>showProyect(proyecto._id)}
 			>
 				{proyecto.name}
 			</button>

@@ -2,7 +2,8 @@ import {Formulario_proyecto,
 		Obtener_proyecto,
 		Agregar_proyecto,
 		Actual_proyecto,
-		Eliminar_proyecto
+		Eliminar_proyecto,
+		Proyecto_error
 } from '../../types'
 
 const ProyectoReducer = (state, action) => {
@@ -27,16 +28,20 @@ const ProyectoReducer = (state, action) => {
 			return {
 				...state,
 				proyecto: state.proyectos.filter(proyecto=>
-					proyecto.id === action.payload)[0]
+					proyecto._id === action.payload)[0]
 			}
 		case Eliminar_proyecto:
 			return {
 				...state,
 				proyectos: state.proyectos.filter(proyecto=>
-					proyecto.id !== action.payload),
+					proyecto._id !== action.payload),
 				proyecto: null
 			}
-
+		case Proyecto_error:
+			return {
+				...state,
+				mensaje: action.payload
+			}
 		default:
 			return state
 	}

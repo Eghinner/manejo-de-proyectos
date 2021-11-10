@@ -9,6 +9,7 @@ const Barra = () => {
 
 	useEffect(() => {
 		usuarioAuth()
+		// eslint-disable-next-line
 	}, [])
 
 	return (

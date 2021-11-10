@@ -39,8 +39,9 @@ const FormTarea = () => {
 
 		// Condicional onSubmit agregar
 		if (taraseleccionada === null) {
-			tarea.proyectid = proyecto.id
+			tarea.proyecto = proyecto._id
 			tarea.estado = false
+			// console.log(tarea)
 			agreagrTarea(tarea)
 		// Condicional onSubmit editar
 		} else {
@@ -48,7 +49,7 @@ const FormTarea = () => {
 		}
 
 		// Cargar lista
-		obtenerTareas(proyecto.id)
+		obtenerTareas(proyecto._id)
 		// Resetear input
 		setTarea({
 			name:''

@@ -8,17 +8,25 @@ const NuevoProyecto = () => {
 	const {formulario, showFormulario, agregarProyecto} = context
 
 	const [proyecto, setProyecto] = useState({
-		id: '',
+		// id: '',
 		name: ''
 	})
 
 	const {name} = proyecto
 
+
+	const handleChange = e => {
+		setProyecto({
+			...proyecto,
+			[e.target.name] : e.target.value
+		})
+	}
+
 	const handleSubmit = e => {
 		e.preventDefault()
 
 		// Validar
-		if (name.trim()==='') {return}
+		if (name.trim()==='') return
 
 		// Agregar proyecto al context
 		agregarProyecto(proyecto)
@@ -28,16 +36,11 @@ const NuevoProyecto = () => {
 		})
 	}
 
-	const handleChange = e => {
-		setProyecto({
-			...proyecto,
-			[e.target.name] : e.target.value
-		})
-	}
-
 	const mostrar = () => {
 		showFormulario()
 	}
+
+	// console.log(proyecto)
 
 	return (
 		<React.Fragment>
