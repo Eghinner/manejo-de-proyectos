@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import AlertaContext from '../../context/alertas/AlertaContext.js'
 import AuthContext from '../../context/authenticacion/AuthContext.js'
 
+import ReactTooltip from 'react-tooltip'
+
 const NuevaCuenta = props => {
 
 	// Extraer valores del context
@@ -86,7 +88,7 @@ const NuevaCuenta = props => {
 							type="text"
 							id="nombre"
 							name="nombre"
-							placeholder="Jhon"
+							placeholder="Agregar nombre"
 							onChange={handleChange}
 							value={nombre}
 						/>
@@ -102,7 +104,9 @@ const NuevaCuenta = props => {
 							value={email}
 						/>
 					</div>
-					<div className="campo-form">
+					<div className="campo-form"
+						data-tip="La contraseña debe contener un minimo de 6 caracteres"
+					>
 						<label htmlFor="password">Contraseña</label>
 						<input
 							type="password"
@@ -121,7 +125,7 @@ const NuevaCuenta = props => {
 							name="repassword"
 							onChange={handleChange}
 							value={repassword}
-							placeholder="contraseña"
+							placeholder="confirme su contraseña"
 						/>
 					</div>
 					<div className="campo-form">
@@ -136,6 +140,7 @@ const NuevaCuenta = props => {
 					Ingresar
 				</Link>
 			</div>
+			<ReactTooltip place="top" type="info" effect="float"/>
 		</div>
 	)
 }
