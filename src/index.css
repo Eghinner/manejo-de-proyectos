@@ -7,6 +7,16 @@
   --headingFont:'Raleway', sans-serif;
   --textFont:  'Roboto', sans-serif;
 }
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background-color: grey;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#35779e, #1c3549);
+  border-radius: 5rem;
+}
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -87,7 +97,6 @@ a {
   display: block;
   background-color: transparent;
 }
-
 .btn-eliminar {
   background-color: var(--blanco);
   transition: background-color .8s ease;
@@ -132,14 +141,22 @@ aside  {
 .proyectos {
   margin-top: 10rem;
 }
+/*_________________________________________________________________________*/
 .listado-proyectos li {
   margin-bottom: 2rem;
 }
-.listado-proyectos li a {
-  font-size: 1.4rem;
-  color: var(--gris2);
-  line-height: 1.5;
-  font-weight: 300;
+.proyecto {
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px grey;
+  transition: transform .5s ease;
+  width: 100%;
+  font-weight: 700 !important;
+}
+.proyecto:hover {
+  transform: scale(1.1);
+  box-shadow: 1px 1px 5px 2px grey;
+  cursor: pointer;
 }
 .app-header {
   display: flex;

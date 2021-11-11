@@ -16,7 +16,7 @@ const Barra = () => {
 		<header className="app-header">
 			{
 				usuario?
-				<p className="nombre-usuario">Hola <span>{usuario.nombre}</span></p>
+				<p className="nombre-usuario">Hola, <span>{usuario.nombre}</span></p>
 				:null
 			}
 			<nav className="nav-principal">
