@@ -39,7 +39,9 @@ function App() {
               <Route exact path='/' component={Login}/>
               <Route exact path='/nueva-cuenta' component={NuevaCuenta}/>
               <RutaPrivada exact path='/proyectos' component={Proyectos}/>
-              <Route component={NotFound} />
+              <Route path='*'>
+                <NotFound />
+              </Route>
             </Switch>
           </Router>
         </AuthState>
