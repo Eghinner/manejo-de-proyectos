@@ -4,6 +4,7 @@ import React from 'react'
 import NuevaCuenta from './components/auth/NuevaCuenta.js'
 import Login from './components/auth/Login.js'
 import Proyectos from './components/proyectos/Proyectos.js'
+import NotFound from './components/404/NotFound.js'
 
 // States
 import ProyectoState from './context/proyectos/ProyectoState.js'
@@ -38,6 +39,7 @@ function App() {
               <Route exact path='/' component={Login}/>
               <Route exact path='/nueva-cuenta' component={NuevaCuenta}/>
               <RutaPrivada exact path='/proyectos' component={Proyectos}/>
+              <Route component={NotFound} />
             </Switch>
           </Router>
         </AuthState>
