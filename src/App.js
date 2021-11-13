@@ -1,17 +1,27 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
+// Componentes
 import NuevaCuenta from './components/auth/NuevaCuenta.js'
 import Login from './components/auth/Login.js'
 import Proyectos from './components/proyectos/Proyectos.js'
 
+// States
 import ProyectoState from './context/proyectos/ProyectoState.js'
 import TareaState from './context/tareas/TareaState.js'
 import AlertaState from './context/alertas/AlertaState.js'
 import AuthState from './context/authenticacion/AuthState.js'
-import tokenAuth from './config/token.js'
+
+// Middleware
 import RutaPrivada from './components/rutas/RutaPrivada.js'
 
-// Revisar si tenemos token
+// Router dom v5
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+// token de autorizacion
+import tokenAuth from './config/token.js'
+
+
+
+// Revisar si tenemos token en global
 const token = localStorage.getItem('token')
 if (token) {
   tokenAuth(token)
