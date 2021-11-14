@@ -19,7 +19,7 @@ import RutaHome from './components/rutas/RutaHome.js'
 // Router dom v5
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 // token de autorizacion
-import tokenAuth from './config/token.js'
+// import tokenAuth from './config/token.js'
 
 
 
