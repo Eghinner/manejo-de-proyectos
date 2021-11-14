@@ -11,6 +11,9 @@ export const Eliminar_tarea = 'Eliminar_tarea'
 export const Seleccionar_tarea = 'Seleccionar_tarea'
 export const Actualizar_tarea = 'Actualizar_tarea'
 
+export const Resetear_tarea = 'Resetear_tarea'
+
+
 export const Mostrar_alerta = 'Mostrar_alerta'
 export const Ocultar_alerta = 'Ocultar_alerta'
 

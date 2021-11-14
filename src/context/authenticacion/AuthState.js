@@ -19,8 +19,7 @@ const AuthState = ({children}) => {
 		token: localStorage.getItem('token'),
 		autenticado: null,
 		usuario: null,
-		mensaje: null,
-		cargando: true
+		mensaje: null
 	}
 
 	const [state, dispatch] = useReducer(authReducer, initialState)
@@ -109,13 +108,12 @@ const AuthState = ({children}) => {
 				autenticado: state.autenticado,
 				usuario: state.usuario,
 				mensaje: state.mensaje,
-				cargando: state.cargando,
 				registrarUsuario,
 				iniciarSesion,
 				usuarioAuth,
 				cerrarSesion
-				}}
-				>
+			}}
+		>
 			{children}
 		</AuthContext.Provider>
 	)

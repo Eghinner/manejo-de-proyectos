@@ -3,7 +3,8 @@ import {
 	Agregar_tarea,
 	Eliminar_tarea,
 	Seleccionar_tarea,
-	Actualizar_tarea
+	Actualizar_tarea,
+	Resetear_tarea
 } from '../../types'
 
 const tareaReducer = (state, action) => {
@@ -36,7 +37,11 @@ const tareaReducer = (state, action) => {
 					...state,
 					taraseleccionada: action.payload
 				}
-
+			case Resetear_tarea:
+				return {
+					...state,
+					tareasproyecto: []
+				}
 		default:
 			return state
 	}

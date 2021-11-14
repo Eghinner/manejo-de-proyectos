@@ -1,5 +1,6 @@
 import React, {useContext, useEffect} from 'react'
 import AuthContext from '../../context/authenticacion/AuthContext.js'
+import TareaContext from '../../context/tareas/TareaContext.js'
 
 const Barra = () => {
 
@@ -7,12 +8,16 @@ const Barra = () => {
 	const context = useContext(AuthContext)
 	const {usuario, usuarioAuth, cerrarSesion} = context
 
+	const contextTask = useContext(TareaContext)
+	const {resetTareas} = contextTask
+
 	useEffect(() => {
 		usuarioAuth()
 		// eslint-disable-next-line
 	}, [])
 
 	const close = () => {
+		resetTareas()
 		cerrarSesion()
 	}
 

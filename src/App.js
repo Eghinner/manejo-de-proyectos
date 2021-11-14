@@ -13,7 +13,8 @@ import AlertaState from './context/alertas/AlertaState.js'
 import AuthState from './context/authenticacion/AuthState.js'
 
 // Middleware
-import RutaPrivada from './components/rutas/RutaPrivada.js'
+import RutaProyectos from './components/rutas/RutaProyectos.js'
+import RutaHome from './components/rutas/RutaHome.js'
 
 // Router dom v5
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
@@ -23,10 +24,10 @@ import tokenAuth from './config/token.js'
 
 
 // Revisar si tenemos token en global
-const token = localStorage.getItem('token')
-if (token) {
-  tokenAuth(token)
-}
+// const token = localStorage.getItem('token')
+// if (token) {
+//   tokenAuth(token)
+// }
 
 function App() {
   return (
@@ -36,9 +37,9 @@ function App() {
         <AuthState>
           <Router>
             <Switch>
-              <Route exact path='/' component={Login}/>
-              <Route exact path='/nueva-cuenta' component={NuevaCuenta}/>
-              <RutaPrivada exact path='/proyectos' component={Proyectos}/>
+              <RutaHome exact path='/' component={Login}/>
+              <RutaHome exact path='/nueva-cuenta' component={NuevaCuenta}/>
+              <RutaProyectos exact path='/proyectos' component={Proyectos}/>
               <Route path='*'>
                 <NotFound />
               </Route>

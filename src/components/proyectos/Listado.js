@@ -2,8 +2,6 @@ import React, {useContext, useEffect} from 'react'
 import Proyecto from './Proyecto.js'
 import ProyectContext from '../../context/proyectos/ProyectContext.js'
 import AlertaContext from '../../context/alertas/AlertaContext.js'
-// import {CSSTransition, TransitionGroup} from 'react-transition-group'
-
 
 const Listado = () => {
 
@@ -20,7 +18,7 @@ const Listado = () => {
 		}
 		obtenerProyectos()
 		// eslint-disable-next-line
-	}, [mensaje])
+	}, [mensaje, proyectos])
 
 	if (proyectos.length === 0) return (<p>No hay proyectos</p>)
 

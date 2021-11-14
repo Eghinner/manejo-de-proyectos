@@ -7,7 +7,8 @@ import {
 	Agregar_tarea,
 	Eliminar_tarea,
 	Seleccionar_tarea,
-	Actualizar_tarea
+	Actualizar_tarea,
+	Resetear_tarea
 } from '../../types'
 
 import ClienteAxios from '../../config/axios.js'
@@ -77,6 +78,12 @@ const TareaState = ({children}) => {
 		})
 	}
 
+	const resetTareas = () => {
+		dispatch({
+			type: Resetear_tarea
+		})
+	}
+
 	return (
 		<TareaContext.Provider
 			value={{
@@ -88,7 +95,8 @@ const TareaState = ({children}) => {
 				agreagrTarea,
 				eliminarTarea,
 				seleccionarTarea,
-				actualizarTarea
+				actualizarTarea,
+				resetTareas
 			}}
 		>
 			{children}

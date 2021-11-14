@@ -15,8 +15,7 @@ const authReducer = (state, action) => {
 			return {
 				...state,
 				autenticado: true,
-				mensaje: null,
-				cargando: false
+				mensaje: null
 			}
 		case Cerrar_sesion:
 		case Login_error:
@@ -27,15 +26,13 @@ const authReducer = (state, action) => {
 				token: null,
 				usuario: null,
 				autenticado: null,
-				mensaje: action.payload,
-				cargando: false
+				mensaje: action.payload
 			}
 		case Obtener_usuario:
 			return {
 				...state,
 				autenticado: true,
-				usuario: action.payload,
-				cargando: false
+				usuario: action.payload
 			}
 		default:
 			return state
