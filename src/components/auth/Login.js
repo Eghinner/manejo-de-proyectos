@@ -2,8 +2,12 @@ import React, {useState,useContext, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import AlertaContext from '../../context/alertas/AlertaContext.js'
 import AuthContext from '../../context/authenticacion/AuthContext.js'
+import Spinner from '../layout/Spinner.js'
 
 const Login = props => {
+
+	// Cargando
+	const [loading, setLoad] = useState(false)
 
 	// Extraer valores del context
 	const alertcontext = useContext(AlertaContext)
@@ -51,14 +55,16 @@ const Login = props => {
 			mostrarAlerta('La contraseña es incorrecta', 'alerta-error')
 			return
 		}
+		setLoad(true)
 
 		// Pasar datos
 		iniciarSesion({email, password})
-
+		// setLoad(false)
 	}
 
 	return (
 		<div className="form-usuario">
+			{ loading ? <Spinner/> : null }
 			{ alerta ?
 				<div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>
 				: null

@@ -42,10 +42,10 @@ const ListadoTarea = () => {
 
 	return (
 		<React.Fragment>
-			<h2>Proyecto: {proyecto.name}</h2>
+			<h2>Proyecto: {proyecto===null?null:proyecto.name}</h2>
 			<ul className="listado-tareas">
 				{ tareasproyecto === null
-					? (<li className="tarea"><p>No ha tareas</p></li>)
+					? (<li className="tarea"><p>No hay tareas</p></li>)
 					:
 					<TransitionGroup >
 						{

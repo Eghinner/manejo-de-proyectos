@@ -15,12 +15,16 @@ const Proyecto = ({proyecto}) => {
 		obtenerTareas(id)
 	}
 
+	const mostrarProyecto = () => {
+		showProyect(proyecto._id)
+	}
+
 	return (
 		<li>
 			<button
 				type="button"
 				className="btn btn-blank proyecto"
-				onClick={()=>showProyect(proyecto._id)}
+				onClick={mostrarProyecto}
 			>
 				{proyecto.name}
 			</button>

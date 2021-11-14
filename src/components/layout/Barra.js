@@ -12,6 +12,10 @@ const Barra = () => {
 		// eslint-disable-next-line
 	}, [])
 
+	const close = () => {
+		cerrarSesion()
+	}
+
 	return (
 		<header className="app-header">
 			{
@@ -22,7 +26,7 @@ const Barra = () => {
 			<nav className="nav-principal">
 				<button
 					className="btn btn-blan cerrar-sesion"
-					onClick={()=>cerrarSesion()}
+					onClick={close}
 				>Cerrar Sesión
 				</button>
 			</nav>

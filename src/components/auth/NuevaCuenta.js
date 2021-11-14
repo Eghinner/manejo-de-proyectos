@@ -2,10 +2,13 @@ import React, {useState, useContext, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import AlertaContext from '../../context/alertas/AlertaContext.js'
 import AuthContext from '../../context/authenticacion/AuthContext.js'
+import Spinner from '../layout/Spinner.js'
 
 import ReactTooltip from 'react-tooltip'
 
 const NuevaCuenta = props => {
+
+	const [loading, setLoad] = useState(false)
 
 	// Extraer valores del context
 	const alertcontext = useContext(AlertaContext)
@@ -64,6 +67,7 @@ const NuevaCuenta = props => {
 			mostrarAlerta('La confirmación no es igual', 'alerta-error')
 			return
 		}
+		setLoad(true)
 
 		// Registro
 		registrarUsuario({nombre, email, password})
@@ -73,6 +77,7 @@ const NuevaCuenta = props => {
 
 	return (
 		<div className="form-usuario">
+			{ loading ? <Spinner/> : null }
 			{ alerta ?
 				<div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>
 				: null

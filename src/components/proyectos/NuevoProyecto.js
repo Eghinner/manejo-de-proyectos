@@ -1,14 +1,16 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import ProyectContext from '../../context/proyectos/ProyectContext.js'
+import Spinner from '../layout/Spinner.js'
 
 
 const NuevoProyecto = () => {
 
+	const [loading, setLoad] = useState(false)
+
 	const context = useContext(ProyectContext)
-	const {formulario, showFormulario, agregarProyecto} = context
+	const {formulario, proyectos, showFormulario, agregarProyecto} = context
 
 	const [proyecto, setProyecto] = useState({
-		// id: '',
 		name: ''
 	})
 
@@ -28,6 +30,9 @@ const NuevoProyecto = () => {
 		// Validar
 		if (name.trim()==='') return
 
+		// mostrar cargando
+		setLoad(true)
+
 		// Agregar proyecto al context
 		agregarProyecto(proyecto)
 		// Vaciar input
@@ -40,7 +45,9 @@ const NuevoProyecto = () => {
 		showFormulario()
 	}
 
-	// console.log(proyecto)
+	useEffect(() => {
+		setLoad(false)
+	}, [proyectos])
 
 	return (
 		<React.Fragment>
@@ -51,6 +58,8 @@ const NuevoProyecto = () => {
 			>
 				Nuevo Proyecto
 			</button>
+
+			{ loading ? <Spinner/> : null }
 			{
 				formulario ?
 				(

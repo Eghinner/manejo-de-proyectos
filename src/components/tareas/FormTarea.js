@@ -1,14 +1,17 @@
 import React, {useContext, useState, useEffect} from 'react'
 import ProyectContext from '../../context/proyectos/ProyectContext.js'
 import TareaContext from '../../context/tareas/TareaContext.js'
+import Spinner from '../layout/Spinner.js'
 
 const FormTarea = () => {
+
+	const [loading, setLoad] = useState(false)
 
 	const context = useContext(ProyectContext)
 	const {proyecto} = context
 
 	const tareacontext = useContext(TareaContext)
-	const {taraseleccionada, agreagrTarea, obtenerTareas, actualizarTarea} = tareacontext
+	const {taraseleccionada,tareasproyecto, agreagrTarea, obtenerTareas, actualizarTarea} = tareacontext
 
 	const [tarea, setTarea] = useState({
 		name: ''
@@ -37,6 +40,8 @@ const FormTarea = () => {
 		// Validacion
 		if (name.trim()==='') return
 
+		setLoad(true)
+
 		// Condicional onSubmit agregar
 		if (taraseleccionada === null) {
 			tarea.proyecto = proyecto._id
@@ -56,12 +61,21 @@ const FormTarea = () => {
 		})
 	}
 
+	useEffect(() => {
+		setLoad(false)
+	}, [tareasproyecto])
+
+
+
 	if (!proyecto) {
 		return null
 	}
 
 	return (
 		<div className="formulario">
+
+			{ loading ? <Spinner/> : null }
+
 			<form
 				onSubmit={handleSubmit}
 			>

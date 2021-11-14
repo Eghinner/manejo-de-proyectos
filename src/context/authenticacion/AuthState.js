@@ -30,7 +30,6 @@ const AuthState = ({children}) => {
 	const registrarUsuario = async datos => {
 		try{
 			const respuesta = await ClienteAxios.post('api/usuarios', datos)
-			// console.log(respuesta)
 
 			dispatch({
 				type: Registro_exitoso,
@@ -40,7 +39,6 @@ const AuthState = ({children}) => {
 			// Optener el usuario
 			usuarioAuth()
 		} catch(error) {
-			// console.log(error)
 			const alerta = {
 				msg: error.response.data.msg,
 				categoria: 'alerta-error'
