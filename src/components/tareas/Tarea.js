@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import ProyectContext from '../../context/proyectos/ProyectContext.js'
 import TareaContext from '../../context/tareas/TareaContext.js'
+import Swal from 'sweetalert2'
 
 const Tarea = ({task}) => {
 
@@ -27,6 +28,28 @@ const Tarea = ({task}) => {
 
 	const selecTarea = tarea => {
 		seleccionarTarea(tarea)
+	}
+
+	const eliminarTask = () => {
+			Swal.fire({
+			title: '¿Estas seguro de eliminar esta tarea?',
+			text: "No se puede revertir",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Si, seguro',
+			cancelButtonText: 'Cancelar'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				eliminar(task._id)
+				Swal.fire(
+					'Borrado',
+					'Tarea eliminado con exito',
+					'success'
+				)
+			}
+		})
 	}
 
 	return (
@@ -59,7 +82,7 @@ const Tarea = ({task}) => {
 				<button
 					type="button"
 					className="btn btn-secundario"
-					onClick={()=>eliminar(task._id)}
+					onClick={eliminarTask}
 				>Eliminar</button>
 			</div>
 		</li>

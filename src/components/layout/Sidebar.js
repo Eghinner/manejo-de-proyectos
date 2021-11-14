@@ -1,6 +1,7 @@
 import React from 'react'
 import NuevoProyecto from '../proyectos/NuevoProyecto.js'
 import Listado from '../proyectos/Listado.js'
+// import './layout.css'
 
 const Sidebar = () => {
 	return (

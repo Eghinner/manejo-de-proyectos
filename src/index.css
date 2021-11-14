@@ -40,6 +40,7 @@ h1, h2 {
   margin: 0 0 4rem 0;
   text-align: center;
   color: var(--gris2);
+  word-break: break-all;
 }
 h1 span {
   font-weight: 400;
@@ -77,12 +78,18 @@ a {
 .btn-primario {
   background-color: var(--gris2);
   color: var(--blanco);
+  border-radius: 5px !important;
 }
 .btn-primario:hover {
   background: #00110e;
 }
 .btn-secundario {
   background-color: var(--gris1);
+  transition: background-color .8s ease;
+  border-radius: 5px !important;
+}
+.btn-secundario:hover {
+  background-color: #b32a4f;
 }
 .btn-block {
   display: block;
@@ -114,6 +121,7 @@ a {
   aside {
       background-color: var(--blanco);
       flex: 0 0 300px;
+      max-width: 300px;
   }
   .seccion-principal {
       flex: 1;
@@ -146,6 +154,9 @@ aside  {
   margin-bottom: 2rem;
 }
 .proyecto {
+  /*display: flex;*/
+  /*inline-size: 300px;*/
+  word-break: break-all;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 1px 1px 1px 1px grey;
@@ -237,6 +248,7 @@ aside  {
   margin-right: 1rem;
 }
 .tarea p {
+  word-break: break-all;
   font-size: 1.6rem;
   flex: 1;
   padding-right: 2rem;
