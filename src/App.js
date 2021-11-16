@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react'
+import React, { useEffect } from 'react'
 
 // Componentes
 import Register from './Components/Auth/Register'
@@ -7,10 +7,10 @@ import Projects from './Components/Projects/Projects'
 import NotFound from './Components/NotFound'
 
 
-import ProjectState from './Context/projects/ProjectState.js'
-import TaskState from './Context/tasks/TaskState.js'
-import AlertState from './Context/Alerts/AlertState.js'
-import AuthState from './Context/authentication/AuthState.js'
+import ProjectState from './Context/ProjectContext.js'
+import TaskState from './Context/TaskContext.js'
+import AlertState from './Context/AlertContext.js'
+import AuthState from './Context/AuthContext.js'
 
 // Proteccion de rutas
 import RouteProjects from './Components/Routes/RouteProjects.js'
@@ -35,18 +35,18 @@ const App = () => {
     <ProjectState>
      <TaskState>
       <AlertState>
-        <AuthState>
+          <AuthState>
           <Router>
             <Switch>
               <RouteHome exact path='/' component={Login}/>
               <RouteHome exact path='/nueva-cuenta' component={Register}/>
-                <RouteProjects exact path='/proyectos' component={Projects}/>
+              <RouteProjects exact path='/proyectos' component={Projects}/>
               <Route path='*'>
                 <NotFound />
               </Route>
             </Switch>
           </Router>
-        </AuthState>
+          </AuthState>
       </AlertState>
      </TaskState>
     </ProjectState>

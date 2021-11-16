@@ -1,6 +1,4 @@
-import React, {useReducer} from 'react'
-import ProjectContext from './ProjectContext.js'
-import ProjectReducer from './projectReducer.js'
+import {createContext, useReducer} from 'react'
 
 import {
 	FORM_PROYECT,
@@ -9,17 +7,60 @@ import {
 	CURRENT_PROYECT,
 	DELETE_PROYECT,
 	ERROR_PROYECT
-} from '../../Types'
+} from '../Types'
 
-import ClienteAxios from '../../Config/axios.js'
-// _________________________________________________________________________
-const ProyectoState = ({children}) => {
+import ClienteAxios from '../Config/axios.js'
+
+export const ProjectContext = createContext()
+
+const ProjectState = ({children}) => {
 
 	const initialState = {
 		proyectos : [],
 		formulario: false,
 		proyecto: null,
 		mensaje: null
+	}
+
+	const ProjectReducer = (state, action) => {
+		switch(action.type) {
+			case FORM_PROYECT:
+				return {
+					...state,
+					formulario: true
+				}
+			case GET_PROYECT:
+				return {
+					...state,
+					proyectos: action.payload
+				}
+			case ADD_PROYECT:
+				return {
+					...state,
+					proyectos: [...state.proyectos, action.payload],
+					formulario: false
+				}
+			case CURRENT_PROYECT:
+				return {
+					...state,
+					proyecto: state.proyectos.filter(proyecto=>
+						proyecto._id === action.payload)[0]
+				}
+			case DELETE_PROYECT:
+				return {
+					...state,
+					proyectos: state.proyectos.filter(proyecto=>
+						proyecto._id !== action.payload),
+					proyecto: null
+				}
+			case ERROR_PROYECT:
+				return {
+					...state,
+					mensaje: action.payload
+				}
+			default:
+				return state
+		}
 	}
 
 	const [state, dispatch] = useReducer(ProjectReducer, initialState)
@@ -113,4 +154,4 @@ const ProyectoState = ({children}) => {
 	)
 }
 
-export default ProyectoState
+export default ProjectState

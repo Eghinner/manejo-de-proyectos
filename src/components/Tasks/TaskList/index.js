@@ -1,7 +1,7 @@
 import React, {useContext, useEffect} from 'react'
 import Task from '../Task'
-import ProjectContext from '../../../Context/projects/ProjectContext.js'
-import TaskContext from '../../../Context/tasks/TaskContext.js'
+import {ProjectContext} from '../../../Context/ProjectContext.js'
+import {TaskContext} from '../../../Context/TaskContext.js'
 import {CSSTransition, TransitionGroup} from 'react-transition-group'
 import Swal from 'sweetalert2'
 

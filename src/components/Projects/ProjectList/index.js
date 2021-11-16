@@ -1,8 +1,8 @@
 import React, {useContext, useEffect} from 'react'
 import Project from '../Project'
-import ProjectContext from '../../../Context/projects/ProjectContext.js'
-import AlertContext from '../../../Context/Alerts/AlertContext.js'
-import AuthContext from '../../../Context/authentication/AuthContext.js'
+import {ProjectContext} from '../../../Context/ProjectContext.js'
+import {AlertContext} from '../../../Context/AlertContext.js'
+import {AuthContext} from '../../../Context/AuthContext.js'
 
 import './styles.css'
 

@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
-import ProjectContext from '../../../Context/projects/ProjectContext.js'
-import TaskContext from '../../../Context/tasks/TaskContext.js'
+import {ProjectContext} from '../../../Context/ProjectContext.js'
+import {TaskContext} from '../../../Context/TaskContext.js'
 import Spinner from '../../Layout/Spinner'
 
 import './styles.css'

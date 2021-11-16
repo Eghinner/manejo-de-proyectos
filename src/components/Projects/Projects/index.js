@@ -3,7 +3,7 @@ import Sidebar from '../../Layout/Sidebar'
 import Bar from '../../Layout/Bar'
 import TaskForm from '../../Tasks/TaskForm'
 import TaskList from '../../Tasks/TaskList'
-import AuthContext from '../../../Context/authentication/AuthContext.js'
+import {AuthContext} from '../../../Context/AuthContext.js'
 
 import './styles.css'
 

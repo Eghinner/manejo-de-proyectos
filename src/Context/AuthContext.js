@@ -1,9 +1,6 @@
-import React, {useReducer} from 'react'
-import AuthContext from './AuthContext.js'
-import authReducer from './authReducer.js'
-
-import ClienteAxios from '../../Config/axios.js'
-import tokenAuth from '../../Config/token.js'
+import React, {createContext, useReducer} from 'react'
+import ClienteAxios from '../Config/axios.js'
+import tokenAuth from '../Config/token.js'
 
 import {
 	REGISTER_SECCESS,
@@ -12,7 +9,9 @@ import {
 	LOGIN_SUCCESS,
 	LOGIN_ERROR,
 	CLOSE_SESSION
-} from '../../Types'
+} from '../Types'
+
+export const AuthContext = createContext()
 
 const AuthState = ({children}) => {
 	const initialState = {
@@ -20,6 +19,38 @@ const AuthState = ({children}) => {
 		autenticado: null,
 		usuario: null,
 		mensaje: null
+	}
+
+	const authReducer = (state, action) => {
+		switch (action.type){
+			case REGISTER_SECCESS:
+			case LOGIN_SUCCESS:
+				localStorage.setItem('token', action.payload.token)
+				return {
+					...state,
+					autenticado: true,
+					mensaje: null
+				}
+			case CLOSE_SESSION:
+			case LOGIN_ERROR:
+			case REGISTER_ERROR:
+			localStorage.removeItem('token')
+				return {
+					...state,
+					token: null,
+					usuario: null,
+					autenticado: null,
+					mensaje: action.payload
+				}
+			case GET_USER:
+				return {
+					...state,
+					autenticado: true,
+					usuario: action.payload
+				}
+			default:
+				return state
+		}
 	}
 
 	const [state, dispatch] = useReducer(authReducer, initialState)

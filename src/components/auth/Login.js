@@ -1,7 +1,7 @@
 import React, {useState,useContext, useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import AlertContext from '../../Context/Alerts/AlertContext.js'
-import AuthContext from '../../Context/authentication/AuthContext.js'
+import {AlertContext} from '../../Context/AlertContext.js'
+import {AuthContext} from '../../Context/AuthContext.js'
 import Spinner from '../Layout/Spinner'
 import './styles.css'
 

@@ -1,7 +1,5 @@
-import React, {useReducer} from 'react'
-import TaskContext from './TaskContext.js'
-import taskReducer from './taskReducer.js'
-
+import {createContext, useReducer} from 'react'
+import ClienteAxios from '../Config/axios.js'
 import {
 	TASKS_PROYECT,
 	ADD_TASK,
@@ -9,15 +7,56 @@ import {
 	SELECT_TASK,
 	UPTDATE_TASK,
 	RESET_TASK
-} from '../../Types'
+} from '../Types'
 
-import ClienteAxios from '../../Config/axios.js'
+export const TaskContext = createContext()
 
 const TareaState = ({children}) => {
 	const initialState = {
 		tareasproyecto: [],
 		taraseleccionada: null
 	}
+
+	const taskReducer = (state, action) => {
+		switch(action.type) {
+			case TASKS_PROYECT:
+				return {
+					...state,
+					tareasproyecto: action.payload
+				}
+			case ADD_TASK:
+				return {
+					...state,
+					tareasproyecto: [action.payload,...state.tareasproyecto]
+				}
+			case DELETE_TASK:
+				return {
+					...state,
+					tareasproyecto: state.tareasproyecto.filter(tarea=>
+						tarea._id!==action.payload)
+				}
+			case UPTDATE_TASK:
+				return {
+					...state,
+					tareasproyecto: state.tareasproyecto.map(tarea=>
+						tarea._id===action.payload._id?action.payload:tarea),
+					taraseleccionada: null
+					}
+			case SELECT_TASK:
+				return {
+					...state,
+					taraseleccionada: action.payload
+				}
+			case RESET_TASK:
+				return {
+					...state,
+					tareasproyecto: []
+				}
+			default:
+				return state
+		}
+	}
+
 
 	const [state, dispatch] = useReducer(taskReducer, initialState)
 

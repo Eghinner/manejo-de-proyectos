@@ -1,6 +1,6 @@
 import React, {useContext, useEffect} from 'react'
-import AuthContext from '../../../Context/authentication/AuthContext.js'
-import TaskContext from '../../../Context/tasks/TaskContext.js'
+import {AuthContext} from '../../../Context/AuthContext.js'
+import {TaskContext} from '../../../Context/TaskContext.js'
 
 import './styles.css'
 

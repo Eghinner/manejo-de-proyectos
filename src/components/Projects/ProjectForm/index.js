@@ -1,5 +1,5 @@
 import React, {useState, useContext, useEffect} from 'react'
-import ProjectContext from '../../../Context/projects/ProjectContext.js'
+import {ProjectContext} from '../../../Context/ProjectContext.js'
 import Spinner from '../../Layout/Spinner'
 
 import './styles.css'

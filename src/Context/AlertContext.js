@@ -1,18 +1,34 @@
-import React, {useReducer} from 'react'
-import AlertContext from './AlertContext.js'
-import alertReducer from './alertReducer.js'
+import React, {useReducer, createContext} from 'react'
 
 import {
 	SHOW_ALERT,
 	HIDE_ALERT
-} from '../../Types'
+} from '../Types'
+
+export const AlertContext = createContext()
 
 const AlertaState = ({children}) => {
 	const initialState = {
 		alerta: null
 	}
 
-	const [state, dispatch] = useReducer(alertReducer, initialState)
+	const alertaReducer = (state,action) => {
+		switch(action.type) {
+			case SHOW_ALERT:
+				return {
+					alerta: action.payload
+				}
+			case HIDE_ALERT:
+				return {
+					alerta: null
+				}
+
+			default:
+				return state
+		}
+	}
+
+	const [state, dispatch] = useReducer(alertaReducer, initialState)
 
 	// Funciones
 	const mostrarAlerta = (msg, categoria) => {
