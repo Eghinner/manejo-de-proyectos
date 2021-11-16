@@ -1,8 +1,9 @@
 import React, {useState,useContext, useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import AlertaContext from '../../context/alertas/AlertaContext.js'
-import AuthContext from '../../context/authenticacion/AuthContext.js'
-import Spinner from '../layout/Spinner.js'
+import AlertContext from '../../Context/Alerts/AlertContext.js'
+import AuthContext from '../../Context/authentication/AuthContext.js'
+import Spinner from '../Layout/Spinner'
+import './styles.css'
 
 const Login = props => {
 
@@ -10,7 +11,7 @@ const Login = props => {
 	const [loading, setLoad] = useState(false)
 
 	// Extraer valores del context
-	const alertcontext = useContext(AlertaContext)
+	const alertcontext = useContext(AlertContext)
 	const {alerta, mostrarAlerta} = alertcontext
 
 	const authcontext = useContext(AuthContext)
@@ -59,7 +60,6 @@ const Login = props => {
 
 		// Pasar datos
 		iniciarSesion({email, password})
-		// setLoad(false)
 	}
 
 	return (
@@ -77,6 +77,7 @@ const Login = props => {
 					<div className="campo-form">
 						<label htmlFor="email">Email</label>
 						<input
+							className="input-text"
 							type="email"
 							id="email"
 							name="email"
@@ -88,6 +89,7 @@ const Login = props => {
 					<div className="campo-form">
 						<label htmlFor="password">Contraseña</label>
 						<input
+							className="input-text"
 							type="password"
 							id="password"
 							name="password"

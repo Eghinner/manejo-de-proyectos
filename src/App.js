@@ -1,54 +1,55 @@
-import React from 'react'
+import React, { useEffect} from 'react'
 
 // Componentes
-import NuevaCuenta from './components/auth/NuevaCuenta.js'
-import Login from './components/auth/Login.js'
-import Proyectos from './components/proyectos/Proyectos.js'
-import NotFound from './components/404/NotFound.js'
+import Register from './Components/Auth/Register'
+import Login from './Components/Auth/Login'
+import Projects from './Components/Projects/Projects'
+import NotFound from './Components/NotFound'
 
-// States
-import ProyectoState from './context/proyectos/ProyectoState.js'
-import TareaState from './context/tareas/TareaState.js'
-import AlertaState from './context/alertas/AlertaState.js'
-import AuthState from './context/authenticacion/AuthState.js'
 
-// Middleware
-import RutaProyectos from './components/rutas/RutaProyectos.js'
-import RutaHome from './components/rutas/RutaHome.js'
+import ProjectState from './Context/projects/ProjectState.js'
+import TaskState from './Context/tasks/TaskState.js'
+import AlertState from './Context/Alerts/AlertState.js'
+import AuthState from './Context/authentication/AuthState.js'
+
+// Proteccion de rutas
+import RouteProjects from './Components/Routes/RouteProjects.js'
+import RouteHome from './Components/Routes/RouteHome.js'
 
 // Router dom v5
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-// token de autorizacion
-// import tokenAuth from './config/token.js'
 
+import tokenAuth from './Config/token.js'
 
+const App = () => {
 
-// Revisar si tenemos token en global
-// const token = localStorage.getItem('token')
-// if (token) {
-//   tokenAuth(token)
-// }
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token){
+      tokenAuth(token)
+    }
+    // eslint-disable-next-line
+  }, [])
 
-function App() {
   return (
-    <ProyectoState>
-  	<TareaState>
-      <AlertaState>
+    <ProjectState>
+     <TaskState>
+      <AlertState>
         <AuthState>
           <Router>
             <Switch>
-              <RutaHome exact path='/' component={Login}/>
-              <RutaHome exact path='/nueva-cuenta' component={NuevaCuenta}/>
-              <RutaProyectos exact path='/proyectos' component={Proyectos}/>
+              <RouteHome exact path='/' component={Login}/>
+              <RouteHome exact path='/nueva-cuenta' component={Register}/>
+                <RouteProjects exact path='/proyectos' component={Projects}/>
               <Route path='*'>
                 <NotFound />
               </Route>
             </Switch>
           </Router>
         </AuthState>
-      </AlertaState>
-    </TareaState>
-    </ProyectoState>
+      </AlertState>
+     </TaskState>
+    </ProjectState>
   )
 }
 

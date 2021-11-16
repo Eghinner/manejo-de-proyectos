@@ -1,0 +1,14 @@
+.proyecto {
+  word-break: break-all;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px grey;
+  transition: transform .5s ease;
+  width: 100%;
+  font-weight: 700 !important;
+}
+.proyecto:hover {
+  transform: scale(1.1);
+  box-shadow: 1px 1px 5px 2px grey;
+  cursor: pointer;
+}

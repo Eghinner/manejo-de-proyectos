@@ -1,0 +1,21 @@
+.proyectos {
+  margin-top: 10rem;
+}
+
+@media (min-width: 768px) {
+
+  aside {
+      background-color: var(--blanco);
+      flex: 0 0 300px;
+      max-width: 300px;
+  }
+
+}
+
+
+/* BARRA LATERAL */
+aside  {
+  padding: 3rem;
+}
+
+
