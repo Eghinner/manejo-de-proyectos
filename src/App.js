@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 import Register from './Components/Auth/Register'
 import Login from './Components/Auth/Login'
 import Projects from './Components/Projects/Projects'
-import NotFound from './Components/NotFound'
+import NotFound from './Components/NotFound/index.js'
 
 
 import ProjectState from './Context/ProjectContext.js'
