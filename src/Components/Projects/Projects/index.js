@@ -14,8 +14,11 @@ const Projects = () => {
 	const {usuarioAuth} = context
 
 	useEffect(() => {
-		usuarioAuth()
-		// eslint-disable-next-line
+		const token = localStorage.getItem('token')
+		if (token){
+			usuarioAuth()
+		}
+	// eslint-disable-next-line
 	}, [])
 
 	return (

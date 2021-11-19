@@ -14,6 +14,7 @@ import {
 export const AuthContext = createContext()
 
 const AuthState = ({children}) => {
+
 	const initialState = {
 		token: localStorage.getItem('token'),
 		autenticado: null,
@@ -84,10 +85,10 @@ const AuthState = ({children}) => {
 	// Retorna el ususario autenticado
 	const usuarioAuth = async() => {
 		const token = localStorage.getItem('token')
-		if (token) {
+		// if (token) {
 			// Enviar token por header
 			tokenAuth(token)
-		}
+		// }
 
 		try {
 			const respuesta = await ClienteAxios.get('/api/auth')

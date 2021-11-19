@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 // Componentes
 import Register from './Components/Auth/Register'
@@ -19,17 +19,7 @@ import RouteHome from './Components/Routes/RouteHome.js'
 // Router dom v5
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import tokenAuth from './Config/token.js'
-
 const App = () => {
-
-  useEffect(() => {
-    const token = localStorage.getItem('token')
-    if (token){
-      tokenAuth(token)
-    }
-    // eslint-disable-next-line
-  }, [])
 
   return (
     <ProjectState>

@@ -1,12 +1,11 @@
 import {createContext, useReducer} from 'react'
-
 import {
-	FORM_PROYECT,
-	GET_PROYECT,
-	ADD_PROYECT,
-	CURRENT_PROYECT,
-	DELETE_PROYECT,
-	ERROR_PROYECT
+	FORM_PROJECT,
+	GET_PROJECT,
+	ADD_PROJECT,
+	CURRENT_PROJECT,
+	DELETE_PROJECT,
+	ERROR_PROJECT
 } from '../Types'
 
 import ClienteAxios from '../Config/axios.js'
@@ -24,36 +23,36 @@ const ProjectState = ({children}) => {
 
 	const ProjectReducer = (state, action) => {
 		switch(action.type) {
-			case FORM_PROYECT:
+			case FORM_PROJECT:
 				return {
 					...state,
 					formulario: true
 				}
-			case GET_PROYECT:
+			case GET_PROJECT:
 				return {
 					...state,
 					proyectos: action.payload
 				}
-			case ADD_PROYECT:
+			case ADD_PROJECT:
 				return {
 					...state,
 					proyectos: [...state.proyectos, action.payload],
 					formulario: false
 				}
-			case CURRENT_PROYECT:
+			case CURRENT_PROJECT:
 				return {
 					...state,
 					proyecto: state.proyectos.filter(proyecto=>
 						proyecto._id === action.payload)[0]
 				}
-			case DELETE_PROYECT:
+			case DELETE_PROJECT:
 				return {
 					...state,
 					proyectos: state.proyectos.filter(proyecto=>
 						proyecto._id !== action.payload),
 					proyecto: null
 				}
-			case ERROR_PROYECT:
+			case ERROR_PROJECT:
 				return {
 					...state,
 					mensaje: action.payload
@@ -67,7 +66,7 @@ const ProjectState = ({children}) => {
 
 	const showFormulario = () => {
 		dispatch({
-			type: FORM_PROYECT
+			type: FORM_PROJECT
 		})
 	}
 // _________________________________________________________________________
@@ -75,7 +74,7 @@ const ProjectState = ({children}) => {
 		try {
 			const resultado = await ClienteAxios.get('/api/proyectos')
 			dispatch({
-				type: GET_PROYECT,
+				type: GET_PROJECT,
 				payload: resultado.data.proyectos
 			})
 		} catch (error) {
@@ -84,7 +83,7 @@ const ProjectState = ({children}) => {
 				categoria: 'alerta-error'
 			}
 			dispatch({
-				type: ERROR_PROYECT,
+				type: ERROR_PROJECT,
 				payload: alerta
 			})
 		}
@@ -92,9 +91,10 @@ const ProjectState = ({children}) => {
 // _________________________________________________________________________
 	const agregarProyecto = async (proyecto) => {
 		try {
+
 			const resultado = await ClienteAxios.post('/api/proyectos', proyecto)
 			dispatch({
-				type: ADD_PROYECT,
+				type: ADD_PROJECT,
 				payload: resultado.data
 			})
 		} catch (error) {
@@ -103,7 +103,7 @@ const ProjectState = ({children}) => {
 				categoria: 'alerta-error'
 			}
 			dispatch({
-				type: ERROR_PROYECT,
+				type: ERROR_PROJECT,
 				payload: alerta
 			})
 		}
@@ -111,7 +111,7 @@ const ProjectState = ({children}) => {
 // _________________________________________________________________________
 	const actualProyecto = proyectoId => {
 		dispatch({
-			type: CURRENT_PROYECT,
+			type: CURRENT_PROJECT,
 			payload: proyectoId
 		})
 	}
@@ -120,7 +120,7 @@ const ProjectState = ({children}) => {
 		try {
 			await ClienteAxios.delete(`/api/proyectos/${proyectoId}`)
 			dispatch({
-				type: DELETE_PROYECT,
+				type: DELETE_PROJECT,
 				payload: proyectoId
 			})
 		} catch (error) {
@@ -129,7 +129,7 @@ const ProjectState = ({children}) => {
 				categoria: 'alerta-error'
 			}
 			dispatch({
-				type: ERROR_PROYECT,
+				type: ERROR_PROJECT,
 				payload: alerta
 			})
 		}

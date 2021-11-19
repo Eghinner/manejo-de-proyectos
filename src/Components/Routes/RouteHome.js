@@ -1,7 +1,6 @@
 import React, {useContext, useEffect} from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import {AuthContext} from '../../Context/AuthContext.js'
-import tokenAuth from '../../Config/token.js'
 
 const RouteHome = ({component: Component, ...props}) => {
 
@@ -11,7 +10,6 @@ const RouteHome = ({component: Component, ...props}) => {
 	useEffect(() => {
 		const token = localStorage.getItem('token')
 		if (token){
-			tokenAuth(token)
 			usuarioAuth()
 		}
 		// eslint-disable-next-line

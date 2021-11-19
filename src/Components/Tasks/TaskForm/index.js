@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import {ProjectContext} from '../../../Context/ProjectContext.js'
 import {TaskContext} from '../../../Context/TaskContext.js'
+import {AlertContext} from '../../../Context/AlertContext.js'
 import Spinner from '../../Layout/Spinner'
 
 import './styles.css'
@@ -15,10 +16,17 @@ const TaskForm = () => {
 	const tareacontext = useContext(TaskContext)
 	const {taraseleccionada, tareasproyecto, agreagrTarea, actualizarTarea} = tareacontext
 
+	// Extraer valores del context
+	const alertcontext = useContext(AlertContext)
+	const {mostrarAlerta} = alertcontext
+
 	const [tarea, setTarea] = useState({
 		name: ''
 	})
 	const {name} = tarea
+
+	// Token existente
+	const token = localStorage.getItem('token')
 
 	useEffect(() => {
 		if (taraseleccionada!==null) {
@@ -40,7 +48,15 @@ const TaskForm = () => {
 	const handleSubmit = e => {
 		e.preventDefault()
 		// Validacion
-		if (name.trim()==='') return
+		if (name.trim()==='') {
+			mostrarAlerta('No ingresar tarea vacia', 'alerta-error')
+			return
+		}
+
+		if (!token) {
+			mostrarAlerta('Error de validación', 'alerta-error')
+			return
+		}
 
 		setLoad(true)
 
@@ -72,7 +88,6 @@ const TaskForm = () => {
 
 	return (
 		<div className="formulario">
-
 			{ loading ? <Spinner/> : null }
 
 			<form

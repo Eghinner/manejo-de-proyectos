@@ -6,10 +6,13 @@ const RouteProjects = ({component: Component, ...props}) => {
 
 	const context = useContext(AuthContext)
 	const {autenticado, usuarioAuth} = context
+	const token = localStorage.getItem('token')
 
 	useEffect(() => {
-		usuarioAuth()
-		// eslint-disable-next-line
+		if (token){
+			usuarioAuth()
+		}
+	// eslint-disable-next-line
 	}, [])
 
 	return (
