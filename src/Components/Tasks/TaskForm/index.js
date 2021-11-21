@@ -14,7 +14,7 @@ const TaskForm = () => {
 	const {proyecto} = context
 
 	const tareacontext = useContext(TaskContext)
-	const {taraseleccionada, tareasproyecto, agreagrTarea, actualizarTarea} = tareacontext
+	const {taraseleccionada, tareasproyecto, agreagrTarea, actualizarTarea, resetTareas} = tareacontext
 
 	// Extraer valores del context
 	const alertcontext = useContext(AlertContext)
@@ -72,6 +72,7 @@ const TaskForm = () => {
 					name:''
 				})
 				setLoad(false)
+				resetTareas()
 			} else {
 				actualizarTarea(tarea)
 			}

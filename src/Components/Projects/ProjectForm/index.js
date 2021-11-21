@@ -37,7 +37,7 @@ const ProjectForm = () => {
 
 		// Validar
 		if (name.trim()==='') {
-			mostrarAlerta('No ingresar projecto vacio', 'alerta-error')
+			mostrarAlerta('No ingresar proyecto vacio', 'alerta-error')
 			return
 		}
 

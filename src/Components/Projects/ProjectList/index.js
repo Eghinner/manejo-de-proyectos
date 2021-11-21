@@ -25,7 +25,7 @@ const ProjectList = () => {
 	}, [mensaje])
 
 	useEffect(() => {
-		obtenerProyectos()
+			obtenerProyectos()
 		// eslint-disable-next-line
 	}, [usuario])
 

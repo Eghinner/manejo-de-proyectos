@@ -82,7 +82,7 @@ const AuthState = ({children}) => {
 			})
 
 			// Optener el usuario
-			// usuarioAuth()
+			usuarioAuth()
 		} catch(error) {
 			const alerta = {
 				msg: error.response.data.msg,
@@ -99,10 +99,10 @@ const AuthState = ({children}) => {
 	// Retorna el ususario autenticado
 	const usuarioAuth = async() => {
 		const token = localStorage.getItem('token')
-		// if (token) {
+		if (token) {
 			// Enviar token por header
 			tokenAuth(token)
-		// }
+		}
 
 		try {
 			const respuesta = await ClienteAxios.get('/api/auth')
@@ -126,7 +126,7 @@ const AuthState = ({children}) => {
 			})
 
 			// Optener el usuario
-			// usuarioAuth()
+			usuarioAuth()
 		} catch (error) {
 			console.log(error.response.data.msg)
 			const alerta = {
