@@ -82,7 +82,7 @@ const AuthState = ({children}) => {
 			})
 
 			// Optener el usuario
-			usuarioAuth()
+			// usuarioAuth()
 		} catch(error) {
 			const alerta = {
 				msg: error.response.data.msg,
@@ -126,7 +126,7 @@ const AuthState = ({children}) => {
 			})
 
 			// Optener el usuario
-			usuarioAuth()
+			// usuarioAuth()
 		} catch (error) {
 			console.log(error.response.data.msg)
 			const alerta = {
