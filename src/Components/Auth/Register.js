@@ -8,14 +8,12 @@ import './styles.css'
 
 const Register = props => {
 
-	const [loading, setLoad] = useState(false)
-
 	// Extraer valores del context
 	const alertcontext = useContext(AlertContext)
 	const {alerta, mostrarAlerta} = alertcontext
 
 	const authcontext = useContext(AuthContext)
-	const {mensaje, autenticado, registrarUsuario} = authcontext
+	const {mensaje, autenticado, registrarUsuario, loading, setLoading} = authcontext
 
 	useEffect(() => {
 		if (mensaje) {
@@ -74,7 +72,7 @@ const Register = props => {
 			return
 		}
 
-		setLoad(true)
+		setLoading(true)
 
 		// Registro
 		registrarUsuario({nombre, email, password})

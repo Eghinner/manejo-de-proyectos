@@ -12,7 +12,7 @@ const RouteProjects = ({component: Component, ...props}) => {
 		if (token){
 			usuarioAuth()
 		}
-	// eslint-disable-next-line
+	 // eslint-disable-next-line
 	}, [])
 
 	return (

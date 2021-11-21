@@ -1,6 +1,8 @@
-import React, {createContext, useReducer} from 'react'
+import React, {createContext, useReducer, useContext} from 'react'
 import ClienteAxios from '../Config/axios.js'
 import tokenAuth from '../Config/token.js'
+import {TaskContext} from './TaskContext.js'
+import {ProjectContext} from './ProjectContext.js'
 
 import {
 	REGISTER_SECCESS,
@@ -8,18 +10,23 @@ import {
 	GET_USER,
 	LOGIN_SUCCESS,
 	LOGIN_ERROR,
-	CLOSE_SESSION
+	CLOSE_SESSION,
+	SET_LOADING
 } from '../Types'
 
 export const AuthContext = createContext()
 
 const AuthState = ({children}) => {
 
+	const {resetTareas} = useContext(TaskContext)
+	const {resetProjects} = useContext(ProjectContext)
+
 	const initialState = {
 		token: localStorage.getItem('token'),
 		autenticado: null,
 		usuario: null,
-		mensaje: null
+		mensaje: null,
+		loading: false
 	}
 
 	const authReducer = (state, action) => {
@@ -30,7 +37,8 @@ const AuthState = ({children}) => {
 				return {
 					...state,
 					autenticado: true,
-					mensaje: null
+					mensaje: null,
+					loading: true
 				}
 			case CLOSE_SESSION:
 			case LOGIN_ERROR:
@@ -41,13 +49,19 @@ const AuthState = ({children}) => {
 					token: null,
 					usuario: null,
 					autenticado: null,
-					mensaje: action.payload
+					mensaje: action.payload,
+					loading: false
 				}
 			case GET_USER:
 				return {
 					...state,
 					autenticado: true,
-					usuario: action.payload
+					usuario: action.payload,
+					loading: true
+				}
+			case SET_LOADING:
+				return {
+					loading: action.payload
 				}
 			default:
 				return state
@@ -68,7 +82,7 @@ const AuthState = ({children}) => {
 			})
 
 			// Optener el usuario
-			usuarioAuth()
+			// usuarioAuth()
 		} catch(error) {
 			const alerta = {
 				msg: error.response.data.msg,
@@ -112,7 +126,7 @@ const AuthState = ({children}) => {
 			})
 
 			// Optener el usuario
-			usuarioAuth()
+			// usuarioAuth()
 		} catch (error) {
 			console.log(error.response.data.msg)
 			const alerta = {
@@ -128,8 +142,17 @@ const AuthState = ({children}) => {
 	}
 
 	const cerrarSesion = () => {
+		resetTareas()
+		resetProjects()
 		dispatch({
 			type: CLOSE_SESSION
+		})
+	}
+
+	const setLoading = bool => {
+		dispatch({
+			type: SET_LOADING,
+			payload: bool
 		})
 	}
 
@@ -140,10 +163,12 @@ const AuthState = ({children}) => {
 				autenticado: state.autenticado,
 				usuario: state.usuario,
 				mensaje: state.mensaje,
+				loading: state.loading,
 				registrarUsuario,
 				iniciarSesion,
 				usuarioAuth,
-				cerrarSesion
+				cerrarSesion,
+				setLoading
 			}}
 		>
 			{children}

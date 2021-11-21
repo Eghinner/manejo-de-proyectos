@@ -5,7 +5,8 @@ import {
 	ADD_PROJECT,
 	CURRENT_PROJECT,
 	DELETE_PROJECT,
-	ERROR_PROJECT
+	ERROR_PROJECT,
+	RESET
 } from '../Types'
 
 import ClienteAxios from '../Config/axios.js'
@@ -56,6 +57,14 @@ const ProjectState = ({children}) => {
 				return {
 					...state,
 					mensaje: action.payload
+				}
+			case RESET:
+				return {
+					...state,
+					proyectos : [],
+					formulario: false,
+					proyecto: null,
+					mensaje: null
 				}
 			default:
 				return state
@@ -135,6 +144,12 @@ const ProjectState = ({children}) => {
 		}
 	}
 
+	const resetProjects = () => {
+		dispatch({
+			type: RESET
+		})
+	}
+
 	return (
 		<ProjectContext.Provider
 			value={{
@@ -146,7 +161,8 @@ const ProjectState = ({children}) => {
 				obtenerProyectos,
 				agregarProyecto,
 				actualProyecto,
-				elminarProyecto
+				elminarProyecto,
+				resetProjects
 			}}
 		>
 			{children}

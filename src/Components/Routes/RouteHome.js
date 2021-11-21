@@ -6,13 +6,13 @@ const RouteHome = ({component: Component, ...props}) => {
 
 	const context = useContext(AuthContext)
 	const {autenticado, usuarioAuth} = context
+	const token = localStorage.getItem('token')
 
 	useEffect(() => {
-		const token = localStorage.getItem('token')
 		if (token){
 			usuarioAuth()
 		}
-		// eslint-disable-next-line
+	 // eslint-disable-next-line
 	}, [])
 
 	return (

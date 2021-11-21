@@ -11,11 +11,10 @@ const Task = ({task}) => {
 	const {proyecto} = context
 
 	const tareacontext = useContext(TaskContext)
-	const {eliminarTarea, obtenerTareas, actualizarTarea, seleccionarTarea} = tareacontext
+	const {eliminarTarea, actualizarTarea, seleccionarTarea} = tareacontext
 
 	const eliminar = id => {
 		eliminarTarea(id, proyecto._id)
-		obtenerTareas(proyecto._id)
 	}
 
 	const cambiarEstado = tarea => {

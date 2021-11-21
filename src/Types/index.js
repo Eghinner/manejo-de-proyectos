@@ -4,6 +4,7 @@ export const ADD_PROJECT = 'ADD_PROJECT'
 export const CURRENT_PROJECT = 'CURRENT_PROJECT'
 export const DELETE_PROJECT = 'DELETE_PROJECT'
 export const ERROR_PROJECT = 'ERROR_PROJECT'
+export const RESET = 'RESET'
 
 export const TASKS_PROYECT = 'TASKS_PROYECT'
 export const ADD_TASK = 'ADD_TASK'
@@ -22,3 +23,5 @@ export const GET_USER = 'GET_USER'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_ERROR = 'LOGIN_ERROR'
 export const CLOSE_SESSION = 'CLOSE_SESSION'
+
+export const SET_LOADING = 'SET_LOADING'

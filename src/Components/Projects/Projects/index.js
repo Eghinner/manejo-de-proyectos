@@ -1,25 +1,12 @@
-import React, {useContext, useEffect} from 'react'
+import React from 'react'
 import Sidebar from '../../Layout/Sidebar'
 import Bar from '../../Layout/Bar'
 import TaskForm from '../../Tasks/TaskForm'
 import TaskList from '../../Tasks/TaskList'
-import {AuthContext} from '../../../Context/AuthContext.js'
 
 import './styles.css'
 
 const Projects = () => {
-
-	// Extraer la info de auth
-	const context = useContext(AuthContext)
-	const {usuarioAuth} = context
-
-	useEffect(() => {
-		const token = localStorage.getItem('token')
-		if (token){
-			usuarioAuth()
-		}
-	// eslint-disable-next-line
-	}, [])
 
 	return (
 		<div className="contenedor-app">

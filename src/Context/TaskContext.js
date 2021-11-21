@@ -50,7 +50,8 @@ const TareaState = ({children}) => {
 			case RESET_TASK:
 				return {
 					...state,
-					tareasproyecto: []
+					tareasproyecto: [],
+					taraseleccionada: null
 				}
 			default:
 				return state

@@ -67,7 +67,14 @@ const TaskForm = () => {
 			agreagrTarea(tarea)
 		// Condicional onSubmit editar
 		} else {
-			actualizarTarea(tarea)
+			if (name===taraseleccionada.name) {
+				setTarea({
+					name:''
+				})
+				setLoad(false)
+			} else {
+				actualizarTarea(tarea)
+			}
 		}
 
 		// Resetear input

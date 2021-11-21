@@ -7,21 +7,16 @@ import './styles.css'
 
 const Login = props => {
 
-	// Cargando
-	const [loading, setLoad] = useState(false)
-
 	// Extraer valores del context
 	const alertcontext = useContext(AlertContext)
 	const {alerta, mostrarAlerta} = alertcontext
 
 	const authcontext = useContext(AuthContext)
-	const {mensaje, autenticado, iniciarSesion} = authcontext
+	const {mensaje, autenticado, iniciarSesion, loading, setLoading} = authcontext
 
 	// Por si muchos acaso
 	useEffect(() => {
-		if (autenticado) {
-			props.history.push('/proyectos')
-		}
+
 		if (mensaje) {
 			mostrarAlerta(mensaje.msg, mensaje.categoria)
 		}
@@ -56,7 +51,8 @@ const Login = props => {
 			mostrarAlerta('La contraseña es incorrecta', 'alerta-error')
 			return
 		}
-		setLoad(true)
+
+		setLoading(true)
 
 		// Pasar datos
 		iniciarSesion({email, password})

@@ -1,6 +1,5 @@
 import React, {useContext, useEffect} from 'react'
 import {AuthContext} from '../../../Context/AuthContext.js'
-import {TaskContext} from '../../../Context/TaskContext.js'
 
 import './styles.css'
 
@@ -10,8 +9,6 @@ const Bar = () => {
 	const context = useContext(AuthContext)
 	const {usuario, usuarioAuth, cerrarSesion} = context
 
-	const contextTask = useContext(TaskContext)
-	const {resetTareas} = contextTask
 
 	useEffect(() => {
 		usuarioAuth()
@@ -19,16 +16,15 @@ const Bar = () => {
 	}, [])
 
 	const close = () => {
-		resetTareas()
 		cerrarSesion()
 	}
 
 	return (
 		<header className="app-header">
 			{
-				usuario?
-				<p className="nombre-usuario">Hola, <span>{usuario.nombre}</span></p>
-				:null
+				usuario
+				? <p className="nombre-usuario">Hola, <span>{usuario.nombre}</span></p>
+				: null
 			}
 			<nav className="nav-principal">
 				<button
